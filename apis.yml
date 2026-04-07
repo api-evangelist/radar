@@ -9,8 +9,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-02-06'
 modified: '2025-02-06'
 url: >-
@@ -25,8 +24,7 @@ apis:
       store locators, address autocomplete, and more. Or, use Radar APIs to manage
       your Radar data, including users, geofences, and events.
     humanURL: ' https://radar.com/documentation/api'
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: ' https://radar.com/documentation/api'
