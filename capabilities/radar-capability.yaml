@@ -1,0 +1,933 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Radar API
+  description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking,
+    location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar
+    APIs to manage your Radar data, including users, geofences, and events.
+  tags:
+  - Radar
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: radar
+    baseUri: https://api.radar.io/v1
+    description: Radar API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: Authorization
+      value: '{{RADAR_TOKEN}}'
+    resources:
+    - name: track
+      path: /track
+      operations:
+      - name: post-track
+        method: POST
+        description: Track a user location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geocode-forward
+      path: /geocode/forward
+      operations:
+      - name: get-geocode-forward
+        method: GET
+        description: Forward geocode an address
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geocode-reverse
+      path: /geocode/reverse
+      operations:
+      - name: get-geocode-reverse
+        method: GET
+        description: Reverse geocode coordinates
+        inputParameters:
+        - name: coordinates
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geocode-ip
+      path: /geocode/ip
+      operations:
+      - name: get-geocode-ip
+        method: GET
+        description: IP geocode
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-autocomplete
+      path: /search/autocomplete
+      operations:
+      - name: get-search-autocomplete
+        method: GET
+        description: Address autocomplete
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-users
+      path: /search/users
+      operations:
+      - name: get-search-users
+        method: GET
+        description: Search users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-geofences
+      path: /search/geofences
+      operations:
+      - name: get-search-geofences
+        method: GET
+        description: Search geofences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-places
+      path: /search/places
+      operations:
+      - name: get-search-places
+        method: GET
+        description: Search places
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: addresses-validate
+      path: /addresses/validate
+      operations:
+      - name: get-addresses-validate
+        method: GET
+        description: Validate an address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-distance
+      path: /route/distance
+      operations:
+      - name: get-route-distance
+        method: GET
+        description: Calculate distance between two points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-matrix
+      path: /route/matrix
+      operations:
+      - name: get-route-matrix
+        method: GET
+        description: Distance matrix routing
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-match
+      path: /route/match
+      operations:
+      - name: get-route-match
+        method: GET
+        description: Match a sequence of coordinates to roads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-directions
+      path: /route/directions
+      operations:
+      - name: get-route-directions
+        method: GET
+        description: Get directions between points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-optimize
+      path: /route/optimize
+      operations:
+      - name: get-route-optimize
+        method: GET
+        description: Route optimization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users
+      path: /users
+      operations:
+      - name: get-users
+        method: GET
+        description: List users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-userid
+      path: /users/{userId}
+      operations:
+      - name: get-users-userid
+        method: GET
+        description: Retrieve a user
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-users-userid
+        method: PUT
+        description: Update a user
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-users-userid
+        method: DELETE
+        description: Delete a user
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geofences
+      path: /geofences
+      operations:
+      - name: get-geofences
+        method: GET
+        description: List geofences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-geofences
+        method: POST
+        description: Create a geofence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geofences-geofenceid
+      path: /geofences/{geofenceId}
+      operations:
+      - name: get-geofences-geofenceid
+        method: GET
+        description: Retrieve a geofence
+        inputParameters:
+        - name: geofenceId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-geofences-geofenceid
+        method: PUT
+        description: Update a geofence
+        inputParameters:
+        - name: geofenceId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-geofences-geofenceid
+        method: DELETE
+        description: Delete a geofence
+        inputParameters:
+        - name: geofenceId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: events
+      path: /events
+      operations:
+      - name: get-events
+        method: GET
+        description: List events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: events-eventid
+      path: /events/{eventId}
+      operations:
+      - name: get-events-eventid
+        method: GET
+        description: Retrieve an event
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: radar-rest
+    description: REST adapter for Radar API.
+    resources:
+    - path: /track
+      name: post-track
+      operations:
+      - method: POST
+        name: post-track
+        description: Track a user location
+        call: radar.post-track
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geocode/forward
+      name: get-geocode-forward
+      operations:
+      - method: GET
+        name: get-geocode-forward
+        description: Forward geocode an address
+        call: radar.get-geocode-forward
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geocode/reverse
+      name: get-geocode-reverse
+      operations:
+      - method: GET
+        name: get-geocode-reverse
+        description: Reverse geocode coordinates
+        call: radar.get-geocode-reverse
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geocode/ip
+      name: get-geocode-ip
+      operations:
+      - method: GET
+        name: get-geocode-ip
+        description: IP geocode
+        call: radar.get-geocode-ip
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/autocomplete
+      name: get-search-autocomplete
+      operations:
+      - method: GET
+        name: get-search-autocomplete
+        description: Address autocomplete
+        call: radar.get-search-autocomplete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/users
+      name: get-search-users
+      operations:
+      - method: GET
+        name: get-search-users
+        description: Search users
+        call: radar.get-search-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/geofences
+      name: get-search-geofences
+      operations:
+      - method: GET
+        name: get-search-geofences
+        description: Search geofences
+        call: radar.get-search-geofences
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/places
+      name: get-search-places
+      operations:
+      - method: GET
+        name: get-search-places
+        description: Search places
+        call: radar.get-search-places
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /addresses/validate
+      name: get-addresses-validate
+      operations:
+      - method: GET
+        name: get-addresses-validate
+        description: Validate an address
+        call: radar.get-addresses-validate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /route/distance
+      name: get-route-distance
+      operations:
+      - method: GET
+        name: get-route-distance
+        description: Calculate distance between two points
+        call: radar.get-route-distance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /route/matrix
+      name: get-route-matrix
+      operations:
+      - method: GET
+        name: get-route-matrix
+        description: Distance matrix routing
+        call: radar.get-route-matrix
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /route/match
+      name: get-route-match
+      operations:
+      - method: GET
+        name: get-route-match
+        description: Match a sequence of coordinates to roads
+        call: radar.get-route-match
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /route/directions
+      name: get-route-directions
+      operations:
+      - method: GET
+        name: get-route-directions
+        description: Get directions between points
+        call: radar.get-route-directions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /route/optimize
+      name: get-route-optimize
+      operations:
+      - method: GET
+        name: get-route-optimize
+        description: Route optimization
+        call: radar.get-route-optimize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users
+      name: get-users
+      operations:
+      - method: GET
+        name: get-users
+        description: List users
+        call: radar.get-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{userId}
+      name: get-users-userid
+      operations:
+      - method: GET
+        name: get-users-userid
+        description: Retrieve a user
+        call: radar.get-users-userid
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{userId}
+      name: put-users-userid
+      operations:
+      - method: PUT
+        name: put-users-userid
+        description: Update a user
+        call: radar.put-users-userid
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{userId}
+      name: delete-users-userid
+      operations:
+      - method: DELETE
+        name: delete-users-userid
+        description: Delete a user
+        call: radar.delete-users-userid
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geofences
+      name: get-geofences
+      operations:
+      - method: GET
+        name: get-geofences
+        description: List geofences
+        call: radar.get-geofences
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geofences
+      name: post-geofences
+      operations:
+      - method: POST
+        name: post-geofences
+        description: Create a geofence
+        call: radar.post-geofences
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geofences/{geofenceId}
+      name: get-geofences-geofenceid
+      operations:
+      - method: GET
+        name: get-geofences-geofenceid
+        description: Retrieve a geofence
+        call: radar.get-geofences-geofenceid
+        with:
+          geofenceId: rest.geofenceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geofences/{geofenceId}
+      name: put-geofences-geofenceid
+      operations:
+      - method: PUT
+        name: put-geofences-geofenceid
+        description: Update a geofence
+        call: radar.put-geofences-geofenceid
+        with:
+          geofenceId: rest.geofenceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /geofences/{geofenceId}
+      name: delete-geofences-geofenceid
+      operations:
+      - method: DELETE
+        name: delete-geofences-geofenceid
+        description: Delete a geofence
+        call: radar.delete-geofences-geofenceid
+        with:
+          geofenceId: rest.geofenceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /events
+      name: get-events
+      operations:
+      - method: GET
+        name: get-events
+        description: List events
+        call: radar.get-events
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /events/{eventId}
+      name: get-events-eventid
+      operations:
+      - method: GET
+        name: get-events-eventid
+        description: Retrieve an event
+        call: radar.get-events-eventid
+        with:
+          eventId: rest.eventId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: radar-mcp
+    transport: http
+    description: MCP adapter for Radar API for AI agent use.
+    tools:
+    - name: post-track
+      description: Track a user location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: radar.post-track
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-geocode-forward
+      description: Forward geocode an address
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-geocode-forward
+      with:
+        query: tools.query
+      inputParameters:
+      - name: query
+        type: string
+        description: query
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-geocode-reverse
+      description: Reverse geocode coordinates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-geocode-reverse
+      with:
+        coordinates: tools.coordinates
+      inputParameters:
+      - name: coordinates
+        type: string
+        description: coordinates
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-geocode-ip
+      description: IP geocode
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-geocode-ip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-autocomplete
+      description: Address autocomplete
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-search-autocomplete
+      with:
+        query: tools.query
+      inputParameters:
+      - name: query
+        type: string
+        description: query
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-users
+      description: Search users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-search-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-geofences
+      description: Search geofences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-search-geofences
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-places
+      description: Search places
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-search-places
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-addresses-validate
+      description: Validate an address
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-addresses-validate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-route-distance
+      description: Calculate distance between two points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-route-distance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-route-matrix
+      description: Distance matrix routing
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-route-matrix
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-route-match
+      description: Match a sequence of coordinates to roads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-route-match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-route-directions
+      description: Get directions between points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-route-directions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-route-optimize
+      description: Route optimization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-route-optimize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users
+      description: List users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users-userid
+      description: Retrieve a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-users-userid
+      with:
+        userId: tools.userId
+      inputParameters:
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-users-userid
+      description: Update a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: radar.put-users-userid
+      with:
+        userId: tools.userId
+      inputParameters:
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-users-userid
+      description: Delete a user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: radar.delete-users-userid
+      with:
+        userId: tools.userId
+      inputParameters:
+      - name: userId
+        type: string
+        description: userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-geofences
+      description: List geofences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-geofences
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-geofences
+      description: Create a geofence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: radar.post-geofences
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-geofences-geofenceid
+      description: Retrieve a geofence
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-geofences-geofenceid
+      with:
+        geofenceId: tools.geofenceId
+      inputParameters:
+      - name: geofenceId
+        type: string
+        description: geofenceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-geofences-geofenceid
+      description: Update a geofence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: radar.put-geofences-geofenceid
+      with:
+        geofenceId: tools.geofenceId
+      inputParameters:
+      - name: geofenceId
+        type: string
+        description: geofenceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-geofences-geofenceid
+      description: Delete a geofence
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: radar.delete-geofences-geofenceid
+      with:
+        geofenceId: tools.geofenceId
+      inputParameters:
+      - name: geofenceId
+        type: string
+        description: geofenceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-events
+      description: List events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-events
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-events-eventid
+      description: Retrieve an event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar.get-events-eventid
+      with:
+        eventId: tools.eventId
+      inputParameters:
+      - name: eventId
+        type: string
+        description: eventId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    RADAR_TOKEN: RADAR_TOKEN
