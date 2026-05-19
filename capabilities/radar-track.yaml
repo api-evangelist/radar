@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Radar API — Track
+  description: 'Radar API — Track. 1 operations. Lead operation: Track a user location. Self-contained Naftiko capability
+    covering one Radar business surface.'
+  tags:
+  - Radar
+  - Track
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADAR_API_KEY: RADAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: radar-track
+    baseUri: https://api.radar.io/v1
+    description: Radar API — Track business capability. Self-contained, no shared references.
+    resources:
+    - name: track
+      path: /track
+      operations:
+      - name: post
+        method: POST
+        description: Track a user location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.RADAR_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: radar-track-rest
+    port: 8080
+    description: REST adapter for Radar API — Track. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/track
+      name: track
+      description: REST surface for track.
+      operations:
+      - method: POST
+        name: post
+        description: Track a user location
+        call: radar-track.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: radar-track-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Radar API — Track. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: track-user-location
+      description: Track a user location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: radar-track.post
+      outputParameters:
+      - type: object
+        mapping: $.

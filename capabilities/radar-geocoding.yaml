@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Radar API — Geocoding
+  description: 'Radar API — Geocoding. 3 operations. Lead operation: Forward geocode an address. Self-contained Naftiko capability
+    covering one Radar business surface.'
+  tags:
+  - Radar
+  - Geocoding
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADAR_API_KEY: RADAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: radar-geocoding
+    baseUri: https://api.radar.io/v1
+    description: Radar API — Geocoding business capability. Self-contained, no shared references.
+    resources:
+    - name: geocode-forward
+      path: /geocode/forward
+      operations:
+      - name: get
+        method: GET
+        description: Forward geocode an address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+    - name: geocode-ip
+      path: /geocode/ip
+      operations:
+      - name: get
+        method: GET
+        description: IP geocode
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geocode-reverse
+      path: /geocode/reverse
+      operations:
+      - name: get
+        method: GET
+        description: Reverse geocode coordinates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: coordinates
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.RADAR_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: radar-geocoding-rest
+    port: 8080
+    description: REST adapter for Radar API — Geocoding. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/geocode/forward
+      name: geocode-forward
+      description: REST surface for geocode-forward.
+      operations:
+      - method: GET
+        name: get
+        description: Forward geocode an address
+        call: radar-geocoding.get
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geocode/ip
+      name: geocode-ip
+      description: REST surface for geocode-ip.
+      operations:
+      - method: GET
+        name: get
+        description: IP geocode
+        call: radar-geocoding.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geocode/reverse
+      name: geocode-reverse
+      description: REST surface for geocode-reverse.
+      operations:
+      - method: GET
+        name: get
+        description: Reverse geocode coordinates
+        call: radar-geocoding.get
+        with:
+          coordinates: rest.coordinates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: radar-geocoding-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Radar API — Geocoding. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: forward-geocode-address
+      description: Forward geocode an address
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-geocoding.get
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ip-geocode
+      description: IP geocode
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-geocoding.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reverse-geocode-coordinates
+      description: Reverse geocode coordinates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-geocoding.get
+      with:
+        coordinates: tools.coordinates
+      outputParameters:
+      - type: object
+        mapping: $.

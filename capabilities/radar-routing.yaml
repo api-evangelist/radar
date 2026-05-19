@@ -1,0 +1,200 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Radar API — Routing
+  description: 'Radar API — Routing. 5 operations. Lead operation: Get directions between points. Self-contained Naftiko capability
+    covering one Radar business surface.'
+  tags:
+  - Radar
+  - Routing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADAR_API_KEY: RADAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: radar-routing
+    baseUri: https://api.radar.io/v1
+    description: Radar API — Routing business capability. Self-contained, no shared references.
+    resources:
+    - name: route-directions
+      path: /route/directions
+      operations:
+      - name: get
+        method: GET
+        description: Get directions between points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-distance
+      path: /route/distance
+      operations:
+      - name: get
+        method: GET
+        description: Calculate distance between two points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-match
+      path: /route/match
+      operations:
+      - name: get
+        method: GET
+        description: Match a sequence of coordinates to roads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-matrix
+      path: /route/matrix
+      operations:
+      - name: get
+        method: GET
+        description: Distance matrix routing
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: route-optimize
+      path: /route/optimize
+      operations:
+      - name: get
+        method: GET
+        description: Route optimization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.RADAR_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: radar-routing-rest
+    port: 8080
+    description: REST adapter for Radar API — Routing. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/route/directions
+      name: route-directions
+      description: REST surface for route-directions.
+      operations:
+      - method: GET
+        name: get
+        description: Get directions between points
+        call: radar-routing.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/route/distance
+      name: route-distance
+      description: REST surface for route-distance.
+      operations:
+      - method: GET
+        name: get
+        description: Calculate distance between two points
+        call: radar-routing.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/route/match
+      name: route-match
+      description: REST surface for route-match.
+      operations:
+      - method: GET
+        name: get
+        description: Match a sequence of coordinates to roads
+        call: radar-routing.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/route/matrix
+      name: route-matrix
+      description: REST surface for route-matrix.
+      operations:
+      - method: GET
+        name: get
+        description: Distance matrix routing
+        call: radar-routing.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/route/optimize
+      name: route-optimize
+      description: REST surface for route-optimize.
+      operations:
+      - method: GET
+        name: get
+        description: Route optimization
+        call: radar-routing.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: radar-routing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Radar API — Routing. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-directions-between-points
+      description: Get directions between points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-routing.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: calculate-distance-between-two-points
+      description: Calculate distance between two points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-routing.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: match-sequence-coordinates-roads
+      description: Match a sequence of coordinates to roads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-routing.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: distance-matrix-routing
+      description: Distance matrix routing
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-routing.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: route-optimization
+      description: Route optimization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: radar-routing.get
+      outputParameters:
+      - type: object
+        mapping: $.
