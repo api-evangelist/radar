@@ -1,0 +1,419 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radar API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Track",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track a user location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.radar.io/v1/track"
+          },
+          "docs": "Track a user location"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward geocode an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/forward",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Forward geocode an address"
+        },
+        {
+          "info": {
+            "name": "Reverse geocode coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/reverse",
+            "params": [
+              {
+                "name": "coordinates",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Reverse geocode coordinates"
+        },
+        {
+          "info": {
+            "name": "IP geocode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/ip"
+          },
+          "docs": "IP geocode"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Address autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/autocomplete",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Address autocomplete"
+        },
+        {
+          "info": {
+            "name": "Search users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/users"
+          },
+          "docs": "Search users"
+        },
+        {
+          "info": {
+            "name": "Search geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/geofences"
+          },
+          "docs": "Search geofences"
+        },
+        {
+          "info": {
+            "name": "Search places",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/places"
+          },
+          "docs": "Search places"
+        },
+        {
+          "info": {
+            "name": "Validate an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/addresses/validate"
+          },
+          "docs": "Validate an address"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate distance between two points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/distance"
+          },
+          "docs": "Calculate distance between two points"
+        },
+        {
+          "info": {
+            "name": "Distance matrix routing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/matrix"
+          },
+          "docs": "Distance matrix routing"
+        },
+        {
+          "info": {
+            "name": "Match a sequence of coordinates to roads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/match"
+          },
+          "docs": "Match a sequence of coordinates to roads"
+        },
+        {
+          "info": {
+            "name": "Get directions between points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/directions"
+          },
+          "docs": "Get directions between points"
+        },
+        {
+          "info": {
+            "name": "Route optimization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/optimize"
+          },
+          "docs": "Route optimization"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/users"
+          },
+          "docs": "List users"
+        },
+        {
+          "info": {
+            "name": "Retrieve a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a user"
+        },
+        {
+          "info": {
+            "name": "Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.radar.io/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a user"
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.radar.io/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Geofences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geofences"
+          },
+          "docs": "List geofences"
+        },
+        {
+          "info": {
+            "name": "Create a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.radar.io/v1/geofences"
+          },
+          "docs": "Create a geofence"
+        },
+        {
+          "info": {
+            "name": "Retrieve a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a geofence"
+        },
+        {
+          "info": {
+            "name": "Update a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a geofence"
+        },
+        {
+          "info": {
+            "name": "Delete a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a geofence"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/events"
+          },
+          "docs": "List events"
+        },
+        {
+          "info": {
+            "name": "Retrieve an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
