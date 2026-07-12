@@ -19,10 +19,16 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/radar/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 common:
+  - type: DomainSecurity
+    url: security/radar-domain-security.yml
+  - type: Authentication
+    url: authentication/radar-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/radarlabs
   - type: LinkedIn
     url: https://www.linkedin.com/company/radarlabs
+  - url: https://radar.com/blog
+    type: Blog
 apis:
   - aid: radar:radar
     name: Radar
