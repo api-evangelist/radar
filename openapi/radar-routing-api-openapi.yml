@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Radar Events Routing API
+  description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and events.
+  version: '1.0'
+  contact:
+    name: Radar
+    url: https://radar.com/documentation/api
+servers:
+- url: https://api.radar.io/v1
+  description: Radar production API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Routing
+  description: Distance, matrix, match, directions, and route optimization
+paths:
+  /route/distance:
+    get:
+      tags:
+      - Routing
+      summary: Calculate distance between two points
+      responses:
+        '200':
+          description: Distance result
+  /route/matrix:
+    get:
+      tags:
+      - Routing
+      summary: Distance matrix routing
+      responses:
+        '200':
+          description: Matrix result
+  /route/match:
+    get:
+      tags:
+      - Routing
+      summary: Match a sequence of coordinates to roads
+      responses:
+        '200':
+          description: Match result
+  /route/directions:
+    get:
+      tags:
+      - Routing
+      summary: Get directions between points
+      responses:
+        '200':
+          description: Directions result
+  /route/optimize:
+    get:
+      tags:
+      - Routing
+      summary: Route optimization
+      responses:
+        '200':
+          description: Optimized route
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

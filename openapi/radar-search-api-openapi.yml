@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Radar Events Search API
+  description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and events.
+  version: '1.0'
+  contact:
+    name: Radar
+    url: https://radar.com/documentation/api
+servers:
+- url: https://api.radar.io/v1
+  description: Radar production API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Search
+  description: Autocomplete, search users, geofences, places, and validate addresses
+paths:
+  /search/autocomplete:
+    get:
+      tags:
+      - Search
+      summary: Address autocomplete
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Autocomplete results
+  /search/users:
+    get:
+      tags:
+      - Search
+      summary: Search users
+      responses:
+        '200':
+          description: User search results
+  /search/geofences:
+    get:
+      tags:
+      - Search
+      summary: Search geofences
+      responses:
+        '200':
+          description: Geofence search results
+  /search/places:
+    get:
+      tags:
+      - Search
+      summary: Search places
+      responses:
+        '200':
+          description: Place search results
+  /addresses/validate:
+    get:
+      tags:
+      - Search
+      summary: Validate an address
+      responses:
+        '200':
+          description: Address validation result
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
