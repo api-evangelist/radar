@@ -5,9 +5,22 @@ description: >-
   location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar
   APIs to manage your Radar data, including users, geofences, and events.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/radar.png
 tags:
   - Location
   - Geocoding
@@ -32,24 +45,90 @@ common:
   - url: https://radar.com/blog
     type: Blog
 apis:
-  - aid: radar:radar
-    name: Radar
-    description: >-
-      Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking,
-      location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use
-      Radar APIs to manage your Radar data, including users, geofences, and events.
-    humanURL: https://radar.com/documentation/api
-    baseURL: https://api.radar.io/v1
-    tags:
-      - Location
-      - Geocoding
-      - Geofencing
-      - Routing
-    properties:
-      - type: Documentation
-        url: https://radar.com/documentation/api
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/radar/refs/heads/main/openapi/radar-openapi.yml
+- aid: radar:radar-events-api
+  name: Radar Events API
+  description: Query location events
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-events-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-geocoding-api
+  name: Radar Geocoding API
+  description: Forward, reverse, and IP geocoding
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-geofences-api
+  name: Radar Geofences API
+  description: Manage geographic boundaries
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Geofences
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-geofences-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-routing-api
+  name: Radar Routing API
+  description: Distance, matrix, match, directions, and route optimization
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Routing
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-routing-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-search-api
+  name: Radar Search API
+  description: Autocomplete, search users, geofences, places, and validate addresses
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-search-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-track-api
+  name: Radar Track API
+  description: Update user locations and generate events
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-track-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
+- aid: radar:radar-users-api
+  name: Radar Users API
+  description: Manage user records
+  humanURL: https://radar.com/documentation/api
+  baseURL: https://api.radar.io/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/radar-users-api-openapi.yml
+  - type: Documentation
+    url: https://radar.com/documentation/api
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
