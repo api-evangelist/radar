@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: Radar API
+  description: >-
+    Use Radar APIs as building blocks for location-based products and services
+    like pickup and delivery tracking, location-triggered notifications,
+    location verification, store locators, address autocomplete, and more. Or,
+    use Radar APIs to manage your Radar data, including users, geofences, and
+    events.
+  version: "1.0"
+  contact:
+    name: Radar
+    url: https://radar.com/documentation/api
+servers:
+  - url: https://api.radar.io/v1
+    description: Radar production API
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Track
+    description: Update user locations and generate events
+  - name: Geocoding
+    description: Forward, reverse, and IP geocoding
+  - name: Search
+    description: Autocomplete, search users, geofences, places, and validate addresses
+  - name: Routing
+    description: Distance, matrix, match, directions, and route optimization
+  - name: Users
+    description: Manage user records
+  - name: Geofences
+    description: Manage geographic boundaries
+  - name: Events
+    description: Query location events
+paths:
+  /track:
+    post:
+      tags: [Track]
+      summary: Track a user location
+      responses:
+        "200":
+          description: Track event generated
+  /geocode/forward:
+    get:
+      tags: [Geocoding]
+      summary: Forward geocode an address
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Forward geocode results }
+  /geocode/reverse:
+    get:
+      tags: [Geocoding]
+      summary: Reverse geocode coordinates
+      parameters:
+        - name: coordinates
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Reverse geocode results }
+  /geocode/ip:
+    get:
+      tags: [Geocoding]
+      summary: IP geocode
+      responses:
+        "200": { description: IP geocode result }
+  /search/autocomplete:
+    get:
+      tags: [Search]
+      summary: Address autocomplete
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Autocomplete results }
+  /search/users:
+    get:
+      tags: [Search]
+      summary: Search users
+      responses:
+        "200": { description: User search results }
+  /search/geofences:
+    get:
+      tags: [Search]
+      summary: Search geofences
+      responses:
+        "200": { description: Geofence search results }
+  /search/places:
+    get:
+      tags: [Search]
+      summary: Search places
+      responses:
+        "200": { description: Place search results }
+  /addresses/validate:
+    get:
+      tags: [Search]
+      summary: Validate an address
+      responses:
+        "200": { description: Address validation result }
+  /route/distance:
+    get:
+      tags: [Routing]
+      summary: Calculate distance between two points
+      responses:
+        "200": { description: Distance result }
+  /route/matrix:
+    get:
+      tags: [Routing]
+      summary: Distance matrix routing
+      responses:
+        "200": { description: Matrix result }
+  /route/match:
+    get:
+      tags: [Routing]
+      summary: Match a sequence of coordinates to roads
+      responses:
+        "200": { description: Match result }
+  /route/directions:
+    get:
+      tags: [Routing]
+      summary: Get directions between points
+      responses:
+        "200": { description: Directions result }
+  /route/optimize:
+    get:
+      tags: [Routing]
+      summary: Route optimization
+      responses:
+        "200": { description: Optimized route }
+  /users:
+    get:
+      tags: [Users]
+      summary: List users
+      responses:
+        "200": { description: List of users }
+  /users/{userId}:
+    get:
+      tags: [Users]
+      summary: Retrieve a user
+      parameters:
+        - { name: userId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: User record }
+    put:
+      tags: [Users]
+      summary: Update a user
+      parameters:
+        - { name: userId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Updated user }
+    delete:
+      tags: [Users]
+      summary: Delete a user
+      parameters:
+        - { name: userId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Deleted }
+  /geofences:
+    get:
+      tags: [Geofences]
+      summary: List geofences
+      responses:
+        "200": { description: List of geofences }
+    post:
+      tags: [Geofences]
+      summary: Create a geofence
+      responses:
+        "200": { description: Created geofence }
+  /geofences/{geofenceId}:
+    get:
+      tags: [Geofences]
+      summary: Retrieve a geofence
+      parameters:
+        - { name: geofenceId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Geofence }
+    put:
+      tags: [Geofences]
+      summary: Update a geofence
+      parameters:
+        - { name: geofenceId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Updated geofence }
+    delete:
+      tags: [Geofences]
+      summary: Delete a geofence
+      parameters:
+        - { name: geofenceId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Deleted }
+  /events:
+    get:
+      tags: [Events]
+      summary: List events
+      responses:
+        "200": { description: List of events }
+  /events/{eventId}:
+    get:
+      tags: [Events]
+      summary: Retrieve an event
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Event }
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

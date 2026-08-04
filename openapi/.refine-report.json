@@ -1,0 +1,26 @@
+{
+  "provider": "radar",
+  "sources": [
+    "radar-events-api-openapi.yml",
+    "radar-geocoding-api-openapi.yml",
+    "radar-geofences-api-openapi.yml",
+    "radar-routing-api-openapi.yml",
+    "radar-search-api-openapi.yml",
+    "radar-track-api-openapi.yml",
+    "radar-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "radar-events-api-openapi.yml",
+    "radar-geocoding-api-openapi.yml",
+    "radar-geofences-api-openapi.yml",
+    "radar-routing-api-openapi.yml",
+    "radar-search-api-openapi.yml",
+    "radar-track-api-openapi.yml",
+    "radar-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
