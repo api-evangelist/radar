@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radar Events Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Address autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/autocomplete",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Address autocomplete"
+        },
+        {
+          "info": {
+            "name": "Search users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/users"
+          },
+          "docs": "Search users"
+        },
+        {
+          "info": {
+            "name": "Search geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/geofences"
+          },
+          "docs": "Search geofences"
+        },
+        {
+          "info": {
+            "name": "Search places",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/search/places"
+          },
+          "docs": "Search places"
+        },
+        {
+          "info": {
+            "name": "Validate an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/addresses/validate"
+          },
+          "docs": "Validate an address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

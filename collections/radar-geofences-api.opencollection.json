@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radar Events Geofences API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geofences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geofences"
+          },
+          "docs": "List geofences"
+        },
+        {
+          "info": {
+            "name": "Create a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.radar.io/v1/geofences"
+          },
+          "docs": "Create a geofence"
+        },
+        {
+          "info": {
+            "name": "Retrieve a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a geofence"
+        },
+        {
+          "info": {
+            "name": "Update a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a geofence"
+        },
+        {
+          "info": {
+            "name": "Delete a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.radar.io/v1/geofences/:geofenceId",
+            "params": [
+              {
+                "name": "geofenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a geofence"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

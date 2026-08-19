@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radar Events Geocoding API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward geocode an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/forward",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Forward geocode an address"
+        },
+        {
+          "info": {
+            "name": "Reverse geocode coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/reverse",
+            "params": [
+              {
+                "name": "coordinates",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Reverse geocode coordinates"
+        },
+        {
+          "info": {
+            "name": "IP geocode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/geocode/ip"
+          },
+          "docs": "IP geocode"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

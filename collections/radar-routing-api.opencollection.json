@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Radar Events Routing API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate distance between two points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/distance"
+          },
+          "docs": "Calculate distance between two points"
+        },
+        {
+          "info": {
+            "name": "Distance matrix routing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/matrix"
+          },
+          "docs": "Distance matrix routing"
+        },
+        {
+          "info": {
+            "name": "Match a sequence of coordinates to roads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/match"
+          },
+          "docs": "Match a sequence of coordinates to roads"
+        },
+        {
+          "info": {
+            "name": "Get directions between points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/directions"
+          },
+          "docs": "Get directions between points"
+        },
+        {
+          "info": {
+            "name": "Route optimization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.radar.io/v1/route/optimize"
+          },
+          "docs": "Route optimization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
