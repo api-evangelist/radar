@@ -51,6 +51,8 @@ apis:
   humanURL: https://radar.com/documentation/api
   baseURL: https://api.radar.io/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -123,6 +125,8 @@ apis:
   humanURL: https://radar.com/documentation/api
   baseURL: https://api.radar.io/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
