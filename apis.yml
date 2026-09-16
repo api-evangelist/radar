@@ -1,9 +1,9 @@
 aid: radar
 name: Radar
-description: >-
-  Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking,
-  location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar
-  APIs to manage your Radar data, including users, geofences, and events.
+description: Use Radar APIs as building blocks for location-based products and services like pickup and
+  delivery tracking, location-triggered notifications, location verification, store locators, address
+  autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and
+  events.
 type: Index
 deliveryModel:
   model: unknown
@@ -34,28 +34,30 @@ position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/radar.png
 tags:
-  - Location
-  - Geocoding
-  - Geofencing
-  - Routing
-  - Maps
+- Location
+- Geocoding
+- Geofencing
+- Routing
+- Maps
 created: '2025-02-06'
-modified: '2026-05-19'
+modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/radar/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 common:
-  - type: AgenticAccess
-    url: agentic-access/radar-agentic-access.yml
-  - type: DomainSecurity
-    url: security/radar-domain-security.yml
-  - type: Authentication
-    url: authentication/radar-authentication.yml
-  - type: GitHubOrganization
-    url: https://github.com/radarlabs
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/radarlabs
-  - url: https://radar.com/blog
-    type: Blog
+- type: Website
+  url: https://radar.com
+- type: AgenticAccess
+  url: agentic-access/radar-agentic-access.yml
+- type: DomainSecurity
+  url: security/radar-domain-security.yml
+- type: Authentication
+  url: authentication/radar-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/radarlabs
+- type: LinkedIn
+  url: https://www.linkedin.com/company/radarlabs
+- url: https://radar.com/blog
+  type: Blog
 apis:
 - aid: radar:radar-events-api
   name: Radar Events API
@@ -146,5 +148,5 @@ apis:
   - type: Documentation
     url: https://radar.com/documentation/api
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
