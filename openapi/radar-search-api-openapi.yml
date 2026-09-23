@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Radar Events Search API
+  title: Radar Search API
   description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and events.
   version: '1.0'
   contact:
@@ -29,6 +29,8 @@ paths:
       responses:
         '200':
           description: Autocomplete results
+      operationId: getSearchAutocomplete
+      x-operation-id-source: derived
   /search/users:
     get:
       tags:
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: User search results
+      operationId: getSearchUsers
+      x-operation-id-source: derived
   /search/geofences:
     get:
       tags:
@@ -45,6 +49,8 @@ paths:
       responses:
         '200':
           description: Geofence search results
+      operationId: getSearchGeofences
+      x-operation-id-source: derived
   /search/places:
     get:
       tags:
@@ -53,6 +59,8 @@ paths:
       responses:
         '200':
           description: Place search results
+      operationId: getSearchPlaces
+      x-operation-id-source: derived
   /addresses/validate:
     get:
       tags:
@@ -61,6 +69,8 @@ paths:
       responses:
         '200':
           description: Address validation result
+      operationId: getAddressesValidate
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:

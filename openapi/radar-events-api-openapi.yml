@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Radar Events API
   description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and events.
@@ -23,6 +23,8 @@ paths:
       responses:
         '200':
           description: List of events
+      operationId: getEvents
+      x-operation-id-source: derived
   /events/{eventId}:
     get:
       tags:
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: Event
+      operationId: getEventsByEventId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:

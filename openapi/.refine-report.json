@@ -1,13 +1,7 @@
 {
   "provider": "radar",
   "sources": [
-    "radar-events-api-openapi.yml",
-    "radar-geocoding-api-openapi.yml",
-    "radar-geofences-api-openapi.yml",
-    "radar-routing-api-openapi.yml",
-    "radar-search-api-openapi.yml",
-    "radar-track-api-openapi.yml",
-    "radar-users-api-openapi.yml"
+    "_original/radar-openapi.yml"
   ],
   "outputs": [
     "radar-events-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "radar-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "radar-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-geocoding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-geofences-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-routing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-track-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "radar-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

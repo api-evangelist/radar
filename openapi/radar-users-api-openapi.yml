@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Radar Events Users API
+  title: Radar Users API
   description: Use Radar APIs as building blocks for location-based products and services like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to manage your Radar data, including users, geofences, and events.
   version: '1.0'
   contact:
@@ -23,6 +23,8 @@ paths:
       responses:
         '200':
           description: List of users
+      operationId: getUsers
+      x-operation-id-source: derived
   /users/{userId}:
     get:
       tags:
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: User record
+      operationId: getUsersByUserId
+      x-operation-id-source: derived
     put:
       tags:
       - Users
@@ -50,6 +54,8 @@ paths:
       responses:
         '200':
           description: Updated user
+      operationId: putUsersByUserId
+      x-operation-id-source: derived
     delete:
       tags:
       - Users
@@ -63,6 +69,8 @@ paths:
       responses:
         '200':
           description: Deleted
+      operationId: deleteUsersByUserId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:
