@@ -45,6 +45,12 @@ modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/radar/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 common:
+- type: Plans
+  url: plans/radar-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/radar-rate-limits.yml
+- type: FinOps
+  url: finops/radar-finops.yml
 - type: Website
   url: https://radar.com
 - type: AgenticAccess
