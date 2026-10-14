@@ -15,3 +15,16 @@
   relationship: connector-coverage
   status: not-a-workflow
   arazzo: null
+- slug: radar-olo-own
+  label: Olo (own)
+  partner: olo
+  partner_name: Olo (own)
+  category: Handoff Technology
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.olo.com/partners/radar
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
